@@ -1,0 +1,25 @@
+services:
+  # Backend Go API (desarrollo sin build)
+  backend:
+    image: golang:1.23-alpine
+    container_name: ceperic-backend
+    working_dir: /app
+    command: sh -c "go mod tidy && go run ./cmd/api"
+    ports:
+      - "8080:8080"
+    volumes:
+      - .:/app
+      - go-modules:/go/pkg/mod
+    env_file:
+      - .env
+    networks:
+      - ceperic-network
+    restart: "no"
+
+networks:
+  ceperic-network:
+    driver: bridge
+
+volumes:
+  go-modules:
+    driver: local
