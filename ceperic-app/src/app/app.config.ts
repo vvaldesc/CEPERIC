@@ -16,13 +16,13 @@ export const appConfig: ApplicationConfig = {
     provideRouter(routes), 
     provideAnimationsAsync(), 
     provideFirebaseApp(() => initializeApp({
-      projectId: "cepe-test",
-      appId: "1:803389290966:web:56f59a93a6c7438e128c77",
-      storageBucket: "cepe-test.firebasestorage.app",
-      apiKey: "AIzaSyBHBvvS57_JM1-Cc0ZqMtCCN6LcA8YiS5c",
-      authDomain: "cepe-test.firebaseapp.com",
-      messagingSenderId: "803389290966",
-      measurementId: "G-Y51V81PD87"
+      apiKey: "AIzaSyARW0jAxCSWJgpFwCLJ5Sy_Zif02-FOo8E",
+      authDomain: "ceperic-68bcd.firebaseapp.com",
+      projectId: "ceperic-68bcd",
+      storageBucket: "ceperic-68bcd.firebasestorage.app",
+      messagingSenderId: "382073954600",
+      appId: "1:382073954600:web:a2d919a22172001637301d",
+      measurementId: "G-0JDN0G4K0L"
     })), 
     provideAuth(() => getAuth()), 
     provideFirestore(() => getFirestore()), 
