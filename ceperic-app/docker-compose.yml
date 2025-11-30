@@ -1,0 +1,37 @@
+version: '3.8'
+
+services:
+  # Servicio de desarrollo
+  dev:
+    container_name: ceperic-app-dev
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "4200:4200"
+    volumes:
+      # Montar código fuente para hot-reload
+      - .:/app
+      # Evitar que node_modules se sobrescriba
+      - /app/node_modules
+    environment:
+      - NODE_ENV=development
+    networks:
+      - ceperic-network
+    command: npm start -- --host 0.0.0.0 --poll 2000
+
+  # Servicio de producción
+  prod:
+    container_name: ceperic-app-prod
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:80"
+    networks:
+      - ceperic-network
+    restart: unless-stopped
+
+networks:
+  ceperic-network:
+    driver: bridge

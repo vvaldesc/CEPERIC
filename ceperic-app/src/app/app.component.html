@@ -1,0 +1,130 @@
+<!-- Navbar con Angular Material y Tailwind -->
+<mat-toolbar color="primary" class="shadow-md">
+  <mat-icon class="mr-3">rocket_launch</mat-icon>
+  <span class="text-2xl font-bold">{{ title }}</span>
+  <span class="flex-1"></span>
+  <button mat-raised-button color="accent" class="ml-2">
+    <mat-icon>login</mat-icon>
+    Login
+  </button>
+</mat-toolbar>
+
+<!-- Contenido principal -->
+<div class="container mx-auto p-8">
+  <!-- Hero Section -->
+  <div class="text-center mb-12">
+    <h1 class="text-5xl font-bold mb-4 bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
+      Bienvenido a CEPERIC App
+    </h1>
+    <p class="text-xl text-gray-600 mb-8">
+      Angular 18 + Material + Firebase + Tailwind CSS + Docker
+    </p>
+  </div>
+
+  <!-- Cards Grid -->
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+    <!-- Card 1: Angular Material -->
+    <mat-card class="hover:shadow-2xl transition-shadow duration-300">
+      <mat-card-header>
+        <mat-icon mat-card-avatar class="text-red-600">angle</mat-icon>
+        <mat-card-title class="font-bold">Angular 18</mat-card-title>
+        <mat-card-subtitle>Framework Moderno</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="mt-4">
+        <p class="text-gray-700">
+          Framework web potente con componentes standalone y señales reactivas.
+        </p>
+      </mat-card-content>
+      <mat-card-actions class="flex justify-end">
+        <button mat-button color="primary">Ver Más</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <!-- Card 2: Firebase -->
+    <mat-card class="hover:shadow-2xl transition-shadow duration-300">
+      <mat-card-header>
+        <mat-icon mat-card-avatar class="text-orange-600">local_fire_department</mat-icon>
+        <mat-card-title class="font-bold">Firebase</mat-card-title>
+        <mat-card-subtitle>Backend as a Service</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="mt-4">
+        <p class="text-gray-700">
+          Autenticación, base de datos en tiempo real y hosting en la nube.
+        </p>
+      </mat-card-content>
+      <mat-card-actions class="flex justify-end">
+        <button mat-button color="primary">Ver Más</button>
+      </mat-card-actions>
+    </mat-card>
+
+    <!-- Card 3: Docker -->
+    <mat-card class="hover:shadow-2xl transition-shadow duration-300">
+      <mat-card-header>
+        <mat-icon mat-card-avatar class="text-blue-600">precision_manufacturing</mat-icon>
+        <mat-card-title class="font-bold">Docker</mat-card-title>
+        <mat-card-subtitle>Containerización</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content class="mt-4">
+        <p class="text-gray-700">
+          Desarrollo y producción dockerizados para máxima portabilidad.
+        </p>
+      </mat-card-content>
+      <mat-card-actions class="flex justify-end">
+        <button mat-button color="primary">Ver Más</button>
+      </mat-card-actions>
+    </mat-card>
+  </div>
+
+  <!-- Features Section -->
+  <mat-card class="bg-gradient-to-r from-blue-50 to-purple-50">
+    <mat-card-content class="p-8">
+      <h2 class="text-3xl font-bold mb-6 text-center text-gray-800">
+        Características Principales
+      </h2>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="flex items-start space-x-3">
+          <mat-icon class="text-green-600">check_circle</mat-icon>
+          <div>
+            <h3 class="font-bold">Hot Reload en Docker</h3>
+            <p class="text-sm text-gray-600">Los cambios se reflejan automáticamente</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-3">
+          <mat-icon class="text-green-600">check_circle</mat-icon>
+          <div>
+            <h3 class="font-bold">Material Design</h3>
+            <p class="text-sm text-gray-600">Componentes UI consistentes y accesibles</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-3">
+          <mat-icon class="text-green-600">check_circle</mat-icon>
+          <div>
+            <h3 class="font-bold">Tailwind CSS</h3>
+            <p class="text-sm text-gray-600">Utility-first para desarrollo rápido</p>
+          </div>
+        </div>
+        <div class="flex items-start space-x-3">
+          <mat-icon class="text-green-600">check_circle</mat-icon>
+          <div>
+            <h3 class="font-bold">Nginx Optimizado</h3>
+            <p class="text-sm text-gray-600">Producción con caché y compresión</p>
+          </div>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <!-- Router Outlet -->
+  <div class="mt-8">
+    <router-outlet></router-outlet>
+  </div>
+</div>
+
+<!-- Footer -->
+<footer class="bg-gray-800 text-white py-6 mt-12">
+  <div class="container mx-auto text-center">
+    <p class="mb-2">CEPERIC App - Angular 18 Full Stack</p>
+    <p class="text-sm text-gray-400">Desarrollado con ❤️ usando las mejores tecnologías</p>
+  </div>
+</footer>
+
