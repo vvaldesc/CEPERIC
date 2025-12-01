@@ -1,4 +1,14 @@
 steps:
+  # Habilitar SQL Admin API
+  - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
+    entrypoint: gcloud
+    args:
+      - 'services'
+      - 'enable'
+      - 'sqladmin.googleapis.com'
+      - '--project=ceperic-68bcd'
+    id: 'enable-sql-api'
+
   # Deploy to Cloud Run directo desde código Go (sin Docker)
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
@@ -19,6 +29,7 @@ steps:
       - '--add-cloudsql-instances=ceperic-68bcd:europe-west1:ceperic-db'
       - '--set-env-vars=DB_HOST=/cloudsql/ceperic-68bcd:europe-west1:ceperic-db,DB_PORT=5432,DB_USER=postgres,DB_NAME=ceperic_db,ENVIRONMENT=production,PORT=8080'
       - '--set-secrets=DB_PASSWORD=ceperic_db_password:latest'
+      - '--quiet'
     id: 'deploy-cloud-run'
 
 # Build timeout
