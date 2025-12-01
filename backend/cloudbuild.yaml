@@ -1,36 +1,12 @@
 steps:
-  # Build Docker image
-  - name: 'gcr.io/cloud-builders/docker'
-    args: 
-      - 'build'
-      - '-t'
-      - 'gcr.io/$PROJECT_ID/ceperic-backend:$COMMIT_SHA'
-      - '-t'
-      - 'gcr.io/$PROJECT_ID/ceperic-backend:latest'
-      - '.'
-    id: 'build-image'
-
-  # Push to Container Registry
-  - name: 'gcr.io/cloud-builders/docker'
-    args: 
-      - 'push'
-      - 'gcr.io/$PROJECT_ID/ceperic-backend:$COMMIT_SHA'
-    id: 'push-image'
-
-  - name: 'gcr.io/cloud-builders/docker'
-    args: 
-      - 'push'
-      - 'gcr.io/$PROJECT_ID/ceperic-backend:latest'
-    id: 'push-latest'
-
-  # Deploy to Cloud Run
+  # Deploy to Cloud Run directo desde código Go (sin Docker)
   - name: 'gcr.io/google.com/cloudsdktool/cloud-sdk'
     entrypoint: gcloud
     args:
       - 'run'
       - 'deploy'
       - 'ceperic-backend'
-      - '--image=gcr.io/$PROJECT_ID/ceperic-backend:$COMMIT_SHA'
+      - '--source=./backend'
       - '--region=europe-west1'
       - '--platform=managed'
       - '--allow-unauthenticated'
@@ -44,11 +20,6 @@ steps:
       - '--set-env-vars=DB_HOST=/cloudsql/ceperic-68bcd:europe-west1:ceperic-db,DB_PORT=5432,DB_USER=postgres,DB_NAME=ceperic_db,ENVIRONMENT=production,PORT=8080'
       - '--set-secrets=DB_PASSWORD=ceperic_db_password:latest'
     id: 'deploy-cloud-run'
-
-# Images to push to Container Registry
-images:
-  - 'gcr.io/$PROJECT_ID/ceperic-backend:$COMMIT_SHA'
-  - 'gcr.io/$PROJECT_ID/ceperic-backend:latest'
 
 # Build timeout
 timeout: '1200s'
