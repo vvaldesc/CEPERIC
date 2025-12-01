@@ -27,7 +27,7 @@ steps:
       - '--timeout=300'
       - '--port=8080'
       - '--add-cloudsql-instances=ceperic-68bcd:europe-west1:ceperic-db'
-      - '--set-env-vars=DB_HOST=/cloudsql/ceperic-68bcd:europe-west1:ceperic-db,DB_PORT=5432,DB_USER=postgres,DB_NAME=ceperic_db,ENVIRONMENT=production,PORT=8080'
+      - '--set-env-vars=DB_HOST=/cloudsql/ceperic-68bcd:europe-west1:ceperic-db,DB_PORT=5432,DB_USER=postgres,DB_NAME=ceperic_db,ENVIRONMENT=production'
       - '--set-secrets=DB_PASSWORD=ceperic_db_password:latest'
       - '--quiet'
     id: 'deploy-cloud-run'
