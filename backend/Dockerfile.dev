@@ -1,0 +1,22 @@
+# Dockerfile para desarrollo con hot-reload
+FROM golang:1.23-alpine
+
+# Instalar herramientas de desarrollo
+RUN apk add --no-cache git
+
+# Instalar CompileDaemon para hot-reload (compatible con Go 1.23)
+RUN go install github.com/githubnemo/CompileDaemon@latest
+
+WORKDIR /app
+
+# Copiar código fuente completo primero
+COPY . .
+
+# Descargar dependencias y generar go.sum
+RUN go mod download && go mod tidy
+
+# Exponer puerto
+EXPOSE 8080
+
+# Comando para desarrollo - usar go run directamente (más simple)
+CMD ["go", "run", "./cmd/api"]
