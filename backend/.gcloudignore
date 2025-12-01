@@ -1,0 +1,24 @@
+# Archivos a ignorar en Cloud Build
+.git
+.gitignore
+.env
+.env.local
+.vscode/
+.idea/
+
+# Docker
+docker-compose.yml
+Dockerfile.dev
+
+# Documentación de desarrollo
+README.md
+SETUP.md
+
+# Tests
+*_test.go
+testdata/
+
+# Build artifacts locales
+tmp/
+*.exe
+main
