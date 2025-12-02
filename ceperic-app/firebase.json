@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/frontend/browser",
+    "public": "dist/ceperic-app/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
